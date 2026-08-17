@@ -5,29 +5,206 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Consulta de Ventana Horaria</title>
   <style>
-    * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
-    body { background-color: #f8fafc; color: #1e293b; margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; }
-    .card { background: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); padding: 24px; max-width: 480px; width: 100%; height: fit-content; margin-top: 20px; }
-    h2 { margin-top: 0; color: #0f172a; font-size: 1.25rem; text-align: center; }
-    label { font-size: 0.875rem; font-weight: 500; color: #475569; display: block; margin-bottom: 8px; }
-    input[type="text"] { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1rem; outline: none; }
-    input[type="text"]:focus { border-color: #2563eb; }
-    .result-box { margin-top: 20px; padding: 16px; border-radius: 8px; background-color: #f1f5f9; border-left: 4px solid #2563eb; display: none; }
-    .detail-item { margin-bottom: 8px; }
-    .detail-item:last-child { margin-bottom: 0; }
-    .result-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; }
-    .result-value { font-size: 1.125rem; font-weight: 600; color: #0f172a; }
-    .not-found { color: #dc2626; border-left-color: #dc2626; background-color: #fef2f2; }
+    :root {
+      --primary-purple: #903F98;
+      --teal-main: #009991;
+      --teal-accent: #009992;
+      --dark-navy: #001E33;
+      --bg-light: #f4f7f9;
+      --white: #ffffff;
+      --text-muted: #5a6e7f;
+      --error-bg: #fff0f3;
+      --error-text: #c01c47;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--dark-navy);
+      background-image: radial-gradient(circle at top right, rgba(0, 153, 145, 0.15), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(144, 63, 152, 0.15), transparent 40%);
+      color: var(--dark-navy);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 30, 51, 0.25);
+      padding: 32px 28px;
+      max-width: 460px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-top: 5px solid var(--primary-purple);
+    }
+
+    /* Encabezado con imagen en la esquina superior derecha */
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      gap: 12px;
+    }
+
+    .header-text {
+      flex: 1;
+    }
+
+    .header-text h2 {
+      margin: 0;
+      color: var(--dark-navy);
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .header-text p {
+      margin: 6px 0 0 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .top-right-image {
+      max-height: 48px;
+      max-width: 110px;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    /* Formulario de Búsqueda */
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--dark-navy);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e1e8ed;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--dark-navy);
+      outline: none;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--teal-main);
+      box-shadow: 0 0 0 4px rgba(0, 153, 145, 0.15);
+    }
+
+    /* Caja de Resultados */
+    .result-box {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 12px;
+      background-color: var(--bg-light);
+      border-left: 5px solid var(--teal-main);
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .detail-item {
+      margin-bottom: 12px;
+    }
+
+    .detail-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .result-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .result-value {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dark-navy);
+    }
+
+    .result-value-highlight {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-purple);
+    }
+
+    .not-found {
+      color: var(--error-text);
+      border-left-color: var(--error-text);
+      background-color: var(--error-bg);
+    }
+
+    .not-found .result-value {
+      color: var(--error-text);
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* Footer o crédito sutil */
+    .card-footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border-top: 1px solid #edf2f7;
+      padding-top: 14px;
+    }
   </style>
 </head>
 <body>
+
   <div class="card">
-    <h2>Consulta de Ventanas de Atención</h2>
-    <label for="searchInput">Ingresa el código o placa a consultar:</label>
-    <input type="text" id="searchInput" placeholder="Ej: AYE-825..." maxlength="7" oninput="buscarDato()">
+    <div class="header-container">
+      <div class="header-text">
+        <h2>Consulta de Ventana Horaria</h2>
+        <p>Salida de Cochera</p>
+      </div>
+      <!-- Cambia 'tu-logo-o-imagen.png' por la URL o nombre de tu imagen subida a GitHub -->
+      <img src="impala.png" alt="Logo" class="top-right-image" onerror="this.style.display='none'">
+    </div>
+
+    <div class="input-group">
+      <label for="searchInput">Ingrese la placa de la unidad (7 caracteres):</label>
+      <input type="text" id="searchInput" placeholder="Ej: AYE-825" maxlength="7" oninput="buscarDato()">
+    </div>
     
     <div id="result" class="result-box">
       <div id="resultContent"></div>
+    </div>
+
+    <div class="card-footer">
+      Sistema de Control Operativo
     </div>
   </div>
 
@@ -59,19 +236,19 @@
       if (item) {
         resultContent.innerHTML = `
           <div class="detail-item">
-            <div class="result-title">Código / Placa:</div>
+            <div class="result-title">Placa / Código:</div>
             <div class="result-value">${item.CODIGO}</div>
           </div>
-          <div class="detail-item" style="margin-top: 10px;">
+          <div class="detail-item" style="margin-top: 12px;">
             <div class="result-title">Ventana Horaria Asignada:</div>
-            <div class="result-value" style="color: #2563eb;">${item.VENTANA_HORARIA}</div>
+            <div class="result-value-highlight">${item.VENTANA_HORARIA}</div>
           </div>
         `;
         resultBox.className = 'result-box';
         resultBox.style.display = 'block';
       } else {
         resultContent.innerHTML = `
-          <div class="result-value" style="font-size: 0.95rem;">Por favor consulte con el equipo de cochera sobre su atención. Gracias</div>
+          <div class="result-value">Por favor consulte con el equipo de cochera sobre su atención. Gracias.</div>
         `;
         resultBox.className = 'result-box not-found';
         resultBox.style.display = 'block';
