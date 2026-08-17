@@ -24,7 +24,7 @@
   <div class="card">
     <h2>Consulta de Ventanas de Atención</h2>
     <label for="searchInput">Ingresa el código o placa a consultar:</label>
-    <input type="text" id="searchInput" placeholder="Ej: AYE-825..." oninput="buscarDato()">
+    <input type="text" id="searchInput" placeholder="Ej: AYE-825..." maxlength="7" oninput="buscarDato()">
     
     <div id="result" class="result-box">
       <div id="resultContent"></div>
@@ -45,14 +45,15 @@
       const resultBox = document.getElementById('result');
       const resultContent = document.getElementById('resultContent');
 
-      if (query === '') {
+      // Solo busca cuando la placa tenga exactamente 7 caracteres
+      if (query.length < 7) {
         resultBox.style.display = 'none';
         return;
       }
 
-      // Buscar coincidencia en la clave CODIGO
+      // Coincidencia exacta con la placa/código
       const item = dataset.find(row => 
-        row.CODIGO && row.CODIGO.toLowerCase().includes(query)
+        row.CODIGO && row.CODIGO.toString().trim().toLowerCase() === query
       );
 
       if (item) {
@@ -70,7 +71,7 @@
         resultBox.style.display = 'block';
       } else {
         resultContent.innerHTML = `
-          <div class="result-value" style="font-size: 0.95rem;">No se encontró información para este código.</div>
+          <div class="result-value" style="font-size: 0.95rem;">Por favor consulte con el equipo de cochera sobre su atención. Gracias</div>
         `;
         resultBox.className = 'result-box not-found';
         resultBox.style.display = 'block';
