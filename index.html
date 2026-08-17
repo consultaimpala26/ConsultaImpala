@@ -194,8 +194,8 @@
         <h2>Consulta de Ventana Horaria</h2>
         <p>Salida de Cochera</p>
       </div>
-      <!-- Reemplaza 'logo.png' con el nombre de tu archivo de imagen subido a GitHub -->
-      <img src="Impala.png" alt="Logo" class="top-right-image" onerror="this.style.display='none'">
+      <!-- Reemplaza 'logo.png' con el nombre de tu archivo de imagen en GitHub -->
+      <img src="logo.png" alt="Logo" class="top-right-image" onerror="this.style.display='none'">
     </div>
 
     <div class="input-group">
@@ -218,29 +218,46 @@
     // Cargar datos desde data.json
     fetch('data.json')
       .then(response => response.json())
-      .Un fondo blanco puro (`#FFFFFF`) o un tono neutro ultra-claro (`#F8F9FA` o `#F5F3FF`) es la mejor opción para garantizar legibilidad, profesionalismo y destacar las letras negras junto con los detalles morados.
+      .then(data => { dataset = data; })
+      .catch(err => console.error('Error al cargar data.json:', err));
 
-**Opciones de Fondo Recomendadas**
+    function buscarDato() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      const resultBox = document.getElementById('result');
+      const resultContent = document.getElementById('resultContent');
 
-* **Blanco Puro (`#FFFFFF`):** Acabado minimalista, limpio y sofisticado. Permite que el morado resalte como color de acento sin distracciones.
-* **Gris Frío Claro (`#F8F9FA`):** Reduce la fatiga visual en pantalla manteniendo un contraste alto y formal.
-* **Toque Lavanda Subtil (`#F5F3FF`):** Incorpora un matiz casi imperceptible del morado de tu paleta para conectar la marca con el fondo de forma sobria.
+      // Solo busca cuando la placa tenga exactamente 7 caracteres
+      if (query.length < 7) {
+        resultBox.style.display = 'none';
+        return;
+      }
 
-```css
-/* Configuración de fondo y jerarquía visual */
-body {
-  background-color: #FFFFFF; /* O usa #F5F3FF para un matiz morado muy suave */
-  color: #111827;            /* Texto oscuro de alta legibilidad */
-  font-family: system-ui, -apple-system, sans-serif;
-  margin: 0;
-  padding: 0;
-}
+      // Coincidencia exacta con la placa/código
+      const item = dataset.find(row => 
+        row.CODIGO && row.CODIGO.toString().trim().toLowerCase() === query
+      );
 
-/* Ejemplo para resaltar secciones o tarjetas internas */
-.card {
-  background-color: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  border-top: 4px solid #6B21A8; /* Borde superior con el morado de tu marca */
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
+      if (item) {
+        resultContent.innerHTML = `
+          <div class="detail-item">
+            <div class="result-title">Placa / Código:</div>
+            <div class="result-value">${item.CODIGO}</div>
+          </div>
+          <div class="detail-item" style="margin-top: 12px;">
+            <div class="result-title">Ventana Horaria Asignada:</div>
+            <div class="result-value-highlight">${item.VENTANA_HORARIA}</div>
+          </div>
+        `;
+        resultBox.className = 'result-box';
+        resultBox.style.display = 'block';
+      } else {
+        resultContent.innerHTML = `
+          <div class="result-value">Por favor consulte con el equipo de cochera sobre su atención. Gracias.</div>
+        `;
+        resultBox.className = 'result-box not-found';
+        resultBox.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
