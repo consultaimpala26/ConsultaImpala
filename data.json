@@ -84,6 +84,10 @@
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
+    "CODIGO": "BXW-724",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
     "CODIGO": "BYM-908",
     "VENTANA_HORARIA": "De 13:00 a 16:00"
   },
@@ -310,5 +314,69 @@
   {
     "CODIGO": "ADO-932",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
+  },
+  {
+    "CODIGO": "AYI-850",
+    "VENTANA_HORARIA": "De 19:00 a 21:30"
+  },
+  {
+    "CODIGO": "CFS-822",
+    "VENTANA_HORARIA": "De 19:00 a 21:30"
+  },
+  {
+    "CODIGO": "BUD-797",
+    "VENTANA_HORARIA": "De 19:00 a 21:30"
+  },
+  {
+    "CODIGO": "CAO-882",
+    "VENTANA_HORARIA": "De 19:00 a 21:30"
+  },
+  {
+    "CODIGO": "BSX-822",
+    "VENTANA_HORARIA": "De 2:00 a 4:00"
+  },
+  {
+    "CODIGO": "CFI-758",
+    "VENTANA_HORARIA": "De 21:30 a 12:30"
+  },
+  {
+    "CODIGO": "BDA-949",
+    "VENTANA_HORARIA": "De 21:30 a 12:30"
+  },
+  {
+    "CODIGO": "BDA-768",
+    "VENTANA_HORARIA": "De 21:30 a 12:30"
+  },
+  {
+    "CODIGO": "BZW-713",
+    "VENTANA_HORARIA": "De 12:30 a 2:00"
+  },
+  {
+    "CODIGO": "BTA-826",
+    "VENTANA_HORARIA": "De 21:30 a 12:30"
+  },
+  {
+    "CODIGO": "CCJ-702",
+    "VENTANA_HORARIA": "De 2:00 a 4:00"
+  },
+  {
+    "CODIGO": "CHY-847",
+    "VENTANA_HORARIA": "De 12:30 a 2:00"
+  },
+  {
+    "CODIGO": "BZU-771",
+    "VENTANA_HORARIA": "De 12:30 a 2:00"
+  },
+  {
+    "CODIGO": "CHU-773",
+    "VENTANA_HORARIA": "De 12:30 a 2:00"
+  },
+  {
+    "CODIGO": "BUX-908",
+    "VENTANA_HORARIA": "De 2:00 a 4:00"
+  },
+  {
+    "CODIGO": "BRY-815",
+    "VENTANA_HORARIA": "De 2:00 a 4:00"
   }
 ]
