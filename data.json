@@ -100,6 +100,14 @@
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
+    "CODIGO": "CEL-813",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "CEL-783",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
     "CODIGO": "ATZ-835",
     "VENTANA_HORARIA": "De 16:00 a 19:00"
   },
