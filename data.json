@@ -1,86 +1,106 @@
 [
   {
-    "CODIGO": "AZI-755",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "BVV-910",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "BSW-827",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "AZJ-747",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "CBK-930",
-    "VENTANA_HORARIA": "De 11:00 a 13:00"
-  },
-  {
-    "CODIGO": "BAI-847",
-    "VENTANA_HORARIA": "De 11:00 a 13:00"
-  },
-  {
-    "CODIGO": "BAI-846",
-    "VENTANA_HORARIA": "De 11:00 a 13:00"
-  },
-  {
-    "CODIGO": "CLJ-837",
-    "VENTANA_HORARIA": "De 11:00 a 13:00"
-  },
-  {
-    "CODIGO": "BNZ-857",
-    "VENTANA_HORARIA": "De 11:00 a 13:00"
-  },
-  {
-    "CODIGO": "BMU-872",
-    "VENTANA_HORARIA": "De 11:00 a 13:00"
-  },
-  {
-    "CODIGO": "BWB-742",
+    "CODIGO": "AEV-819",
     "VENTANA_HORARIA": "De 13:00 a 16:00"
   },
   {
-    "CODIGO": "BWC-924",
+    "CODIGO": "CEN-947",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "BVC-852",
+    "CODIGO": "CHQ-742",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "ANG-776",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "BYK-743",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "ANX-932",
+    "CODIGO": "CNR-855",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "ANY-765",
+    "CODIGO": "CAG-785",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "CAX-919",
+    "CODIGO": "B9C-744",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "C7L-859",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "B9K-793",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "AWP-709",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "F5I-724",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "BSS-722",
+    "CODIGO": "CMA-763",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "BWD-772",
+    "CODIGO": "CDA-721",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
+  },
+  {
+    "CODIGO": "F0N-787",
+    "VENTANA_HORARIA": "De 07:00 a 11:00"
+  },
+  {
+    "CODIGO": "BRQ-879",
+    "VENTANA_HORARIA": "De 07:00 a 11:00"
+  },
+  {
+    "CODIGO": "BKK-705",
+    "VENTANA_HORARIA": "De 07:00 a 11:00"
+  },
+  {
+    "CODIGO": "AYL-919",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "BKY-725",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "BUM-712",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "CHP-911",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
+    "CODIGO": "AVT-791",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "CHP-905",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
+    "CODIGO": "CHP-917",
+    "VENTANA_HORARIA": "De 19:00 a 21:30"
+  },
+  {
+    "CODIGO": "CHP-906",
+    "VENTANA_HORARIA": "De 19:00 a 21:30"
   },
   {
     "CODIGO": "BWW-946",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "BYR-815",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "BVB-892",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
@@ -88,31 +108,11 @@
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "BWD-742",
+    "CODIGO": "BUF-835",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "BWD-740",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "ANX-939",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "BVC-858",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "BYT-891",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "BYS-880",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "BRK-791",
+    "CODIGO": "BRL-700",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
@@ -120,91 +120,111 @@
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "CAX-846",
+    "CODIGO": "BYR-846",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "F0F-712",
+    "CODIGO": "BWD-742",
+    "VENTANA_HORARIA": "De 07:00 a 11:00"
+  },
+  {
+    "CODIGO": "AEA-789",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
+    "CODIGO": "AXY-790",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
+    "CODIGO": "CEG-798",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
+    "CODIGO": "ARQ-723",
+    "VENTANA_HORARIA": "De 19:00 a 21:30"
+  },
+  {
+    "CODIGO": "CBY-840",
+    "VENTANA_HORARIA": "De 19:00 a 21:30"
+  },
+  {
+    "CODIGO": "AZR-864",
     "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
-    "CODIGO": "CAA-851",
-    "VENTANA_HORARIA": "De 13:00 a 16:00"
-  },
-  {
-    "CODIGO": "BZH-786",
-    "VENTANA_HORARIA": "De 13:00 a 16:00"
-  },
-  {
-    "CODIGO": "BJU-873",
+    "CODIGO": "AVL-734",
     "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
-    "CODIGO": "AVB-945",
-    "VENTANA_HORARIA": "De 13:00 a 16:00"
+    "CODIGO": "CEW-831",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
-    "CODIGO": "BNO-770",
-    "VENTANA_HORARIA": "De 13:00 a 16:00"
+    "CODIGO": "CLX-799",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
-    "CODIGO": "BNN-749",
-    "VENTANA_HORARIA": "De 13:00 a 16:00"
+    "CODIGO": "CJG-750",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
-    "CODIGO": "BNR-835",
-    "VENTANA_HORARIA": "De 13:00 a 16:00"
-  },
-  {
-    "CODIGO": "BJN-832",
-    "VENTANA_HORARIA": "De 13:00 a 16:00"
-  },
-  {
-    "CODIGO": "BJM-926",
-    "VENTANA_HORARIA": "De 13:00 a 16:00"
-  },
-  {
-    "CODIGO": "T9E-889",
+    "CODIGO": "AUM-863",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "CLO-902",
+    "CODIGO": "C2L-814",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "CLO-929",
+    "CODIGO": "CLC-723",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "BSO-932",
+    "CODIGO": "BYH-933",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "D7K-758",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
+    "CODIGO": "CMA-944",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
-    "CODIGO": "ASC-830",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
+    "CODIGO": "AYE-825",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
-    "CODIGO": "ANB-895",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
+    "CODIGO": "BYI-859",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
-    "CODIGO": "AYW-871",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
+    "CODIGO": "CCG-862",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
-    "CODIGO": "BAX-933",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
+    "CODIGO": "BPA-763",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
     "CODIGO": "CCS-767",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
-    "CODIGO": "AAN-942",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
+    "CODIGO": "CCH-707",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
+  },
+  {
+    "CODIGO": "BLI-878",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
+    "CODIGO": "CMA-786",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
+  },
+  {
+    "CODIGO": "D4Z-700",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
+    "CODIGO": "AXE-945",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
   }
 ]
