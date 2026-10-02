@@ -8,10 +8,6 @@
     "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
-    "CODIGO": "BJS-860",
-    "VENTANA_HORARIA": "Revisar asignaci�n"
-  },
-  {
     "CODIGO": "CCD-909",
     "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
@@ -104,14 +100,6 @@
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
-    "CODIGO": "CBN-763",
-    "VENTANA_HORARIA": "De 11:00 a 13:00"
-  },
-  {
-    "CODIGO": "CBN-847",
-    "VENTANA_HORARIA": "De 11:00 a 13:00"
-  },
-  {
     "CODIGO": "D4Z-700",
     "VENTANA_HORARIA": "De 13:00 a 16:00"
   },
@@ -128,23 +116,39 @@
     "VENTANA_HORARIA": "De 16:00 a 19:00"
   },
   {
+    "CODIGO": "CHE-778",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
+  },
+  {
+    "CODIGO": "D8D-772",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
+  },
+  {
+    "CODIGO": "AJF-923",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
+  },
+  {
+    "CODIGO": "CMA-786",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
+  },
+  {
+    "CODIGO": "CCR-863",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
+  },
+  {
+    "CODIGO": "BLI-878",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
+  },
+  {
+    "CODIGO": "CBN-763",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
+  },
+  {
+    "CODIGO": "CBN-847",
+    "VENTANA_HORARIA": "De 11:00 a 13:00"
+  },
+  {
     "CODIGO": "BSO-932",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "BMB-782",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "BZG-930",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "BZH-786",
-    "VENTANA_HORARIA": "De 07:00 a 11:00"
-  },
-  {
-    "CODIGO": "BYO-918",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
@@ -190,5 +194,37 @@
   {
     "CODIGO": "ADO-932",
     "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "BJS-910",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "CHQ-750",
+    "VENTANA_HORARIA": "De 13:00 a 16:00"
+  },
+  {
+    "CODIGO": "BYL-781",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
+    "CODIGO": "CBW-938",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
+    "CODIGO": "CKW-712",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
+    "CODIGO": "BNX-871",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
+    "CODIGO": "CFX-754",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
+  },
+  {
+    "CODIGO": "CJQ-847",
+    "VENTANA_HORARIA": "De 16:00 a 19:00"
   }
 ]
