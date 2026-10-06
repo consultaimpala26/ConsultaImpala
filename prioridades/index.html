@@ -3,130 +3,290 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión de Prioridades de Despacho</title>
+  <title>Control de Prioridades de Despacho</title>
   <style>
     :root {
       --primary-purple: #903F98;
       --teal-main: #009991;
+      --teal-accent: #009992;
       --dark-navy: #001E33;
       --bg-body: #f8fafc;
       --bg-card: #ffffff;
       --text-muted: #64748b;
+      --border-color: #e2e8f0;
       --success-bg: #e6f4ea;
       --success-text: #137333;
+      --error-bg: #fef2f2;
+      --error-text: #dc2626;
     }
 
-    * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
-    body { background-color: var(--bg-body); color: var(--dark-navy); margin: 0; padding: 16px; }
+    * { box-sizing: border-box; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    body { background-color: var(--bg-body); color: var(--dark-navy); margin: 0; padding: 20px; }
 
-    .header {
+    /* Contenedor Principal */
+    .main-container { max-width: 1200px; margin: 0 auto; }
+
+    /* Encabezado Corporativo */
+    .header-card {
       background: var(--bg-card);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,30,51,0.05);
-      border-top: 4px solid var(--primary-purple);
+      border-radius: 14px;
+      padding: 24px 28px;
+      box-shadow: 0 4px 20px rgba(0, 30, 51, 0.06);
+      border-top: 5px solid var(--primary-purple);
+      border-left: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
       margin-bottom: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 16px;
     }
 
-    h2 { margin: 0; color: var(--dark-navy); font-size: 1.3rem; }
-    .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-top: 4px; }
+    .header-title h1 { margin: 0; font-size: 1.4rem; color: var(--dark-navy); font-weight: 700; }
+    .header-title p { margin: 4px 0 0 0; font-size: 0.875rem; color: var(--text-muted); font-weight: 500; }
 
-    .table-container {
+    .logo-img { max-height: 48px; max-width: 130px; object-fit: contain; }
+
+    /* Resumen de Métricas */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .metric-card {
       background: var(--bg-card);
+      padding: 16px 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,30,51,0.05);
-      overflow-x: auto;
-      border: 1px solid #e2e8f0;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 8px rgba(0,30,51,0.03);
     }
 
-    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
-    th { background: #f1f5f9; color: var(--dark-navy); padding: 12px 14px; font-weight: 700; border-bottom: 2px solid #cbd5e1; }
-    td { padding: 12px 14px; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+    .metric-card .title { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.05em; }
+    .metric-card .value { font-size: 1.5rem; font-weight: 800; color: var(--dark-navy); margin-top: 4px; }
+
+    /* Contenedor de Tabla */
+    .table-card {
+      background: var(--bg-card);
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0, 30, 51, 0.06);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    .table-responsive { overflow-x: auto; }
+
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem; }
+    
+    th {
+      background-color: #f1f5f9;
+      color: var(--dark-navy);
+      padding: 14px 16px;
+      font-weight: 700;
+      border-bottom: 2px solid #cbd5e1;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
     tr:hover { background-color: #f8fafc; }
 
+    /* Badges y Etiquetas */
     .badge-grupo {
       background-color: rgba(0, 153, 145, 0.12);
       color: var(--teal-main);
-      padding: 4px 8px;
+      padding: 4px 10px;
       border-radius: 6px;
       font-weight: 700;
+      font-size: 0.8rem;
     }
 
     .badge-prioridad {
       background-color: rgba(144, 63, 152, 0.12);
       color: var(--primary-purple);
-      padding: 4px 8px;
+      padding: 4px 10px;
       border-radius: 6px;
       font-weight: 800;
+      font-size: 0.85rem;
     }
 
-    .completed { background-color: var(--success-bg) !important; color: var(--success-text); }
-    .time-stamp { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+    .badge-comentario {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background-color: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* Filas completadas */
+    tr.completed { background-color: var(--success-bg) !important; }
+    tr.completed td { color: var(--success-text); }
+
+    .time-stamp { font-size: 0.8rem; font-weight: 600; color: var(--dark-navy); }
+
+    /* Formulario de Salida */
+    .dispatch-control { display: flex; align-items: center; gap: 8px; }
 
     input[type="number"] {
-      width: 70px;
+      width: 65px;
       padding: 6px 8px;
-      border: 1px solid #cbd5e1;
+      border: 1.5px solid #cbd5e1;
       border-radius: 6px;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 0.9rem;
+      outline: none;
     }
+
+    input[type="number"]:focus { border-color: var(--teal-main); }
 
     .btn-despacho {
       background-color: var(--teal-main);
-      color: white;
+      color: #ffffff;
       border: none;
-      padding: 6px 12px;
+      padding: 7px 14px;
       border-radius: 6px;
       font-weight: 600;
+      font-size: 0.8rem;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background-color 0.2s ease;
     }
 
-    .btn-despacho:hover { background-color: var(--teal-accent, #007a74); }
-    .btn-despacho:disabled { background-color: #cbd5e1; cursor: not-allowed; }
+    .btn-despacho:hover { background-color: var(--teal-accent); }
+
+    .btn-reset {
+      background-color: transparent;
+      color: var(--error-text);
+      border: 1px solid var(--error-text);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-reset:hover { background-color: var(--error-bg); }
+
+    .toolbar {
+      padding: 16px 24px;
+      background-color: #ffffff;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: flex-end;
+    }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <div>
-      <h2>Control de Salidas y Prioridades</h2>
-      <div class="subtitle">Despacho de Unidades en Cochera</div>
+  <div class="main-container">
+    <!-- Encabezado -->
+    <div class="header-card">
+      <div class="header-title">
+        <h1>Control y Registro de Salidas de Cochera</h1>
+        <p>Gestión de Prioridades Operativas</p>
+      </div>
+      <!-- Puedes reemplazar 'logo.png' por la imagen de tu preferencia -->
+      <img src="../logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+    </div>
+
+    <!-- Métricas del Turno -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="title">Total Registros</div>
+        <div class="value" id="metricTotal">0</div>
+      </div>
+      <div class="metric-card">
+        <div class="title">Despachados</div>
+        <div class="value" id="metricCompletados" style="color: var(--teal-main);">0</div>
+      </div>
+      <div class="metric-card">
+        <div class="title">Pendientes de Salida</div>
+        <div class="value" id="metricPendientes" style="color: var(--primary-purple);">0</div>
+      </div>
+    </div>
+
+    <!-- Tabla Principal -->
+    <div class="table-card">
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Ventana Horaria</th>
+              <th>Grupo</th>
+              <th>Prioridad</th>
+              <th>Productor</th>
+              <th>Producto</th>
+              <th>Prog.</th>
+              <th>Atendidos</th>
+              <th>Registrar Salida</th>
+              <th>Hora Confirmación</th>
+            </tr>
+          </thead>
+          <tbody id="tablaCuerpo">
+            <!-- Filas generadas dinámicamente -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button class="btn-reset" onclick="reiniciarTabla()">Restablecer Datos Iniciales</button>
+      </div>
     </div>
   </div>
 
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Grupo</th>
-          <th>Prioridad</th>
-          <th>Detalle / Producto</th>
-          <th>Prog.</th>
-          <th>Sacadas</th>
-          <th>Confirmar</th>
-          <th>Hora Salida</th>
-        </tr>
-      </thead>
-      <tbody id="tablaCuerpo">
-        <!-- Filas cargadas dinámicamente -->
-      </tbody>
-    </table>
-  </div>
-
   <script>
-    // Datos iniciales de ejemplo basados en tu estructura
-    let prioridades = [
-      { id: 1, grupo: 1, prioridad: 1, detalle: "ZINC - Pay Metal", prog: 5, sacadas: 0, hora: "", completado: false },
-      { id: 2, grupo: 1, prioridad: 2, detalle: "COBRE - Golden Mantaro", prog: 4, sacadas: 0, hora: "", completado: false },
-      { id: 3, grupo: 2, prioridad: 1, detalle: "PLOMO - Atacocha", prog: 8, sacadas: 0, hora: "", completado: false },
-      { id: 4, grupo: 2, prioridad: 2, detalle: "COBRE - El Brocal", prog: 6, sacadas: 0, hora: "", completado: false }
+    // Datos iniciales base desde la hoja de Prioridades del Excel
+    const datosIniciales = [
+      { id: 1, rango: "De 07:00 a 11:00", grupo: 1, prioridad: 1, productor: "CIEMSA", producto: "PBCON", comentario: "Pomasi", prog: 7, sacadas: 0, hora: "", completado: false },
+      { id: 2, rango: "De 07:00 a 11:00", grupo: 1, prioridad: 2, productor: "BUENAVENTURA", producto: "CUCON", comentario: "Orocopampa 126/26", prog: 4, sacadas: 0, hora: "", completado: false },
+      { id: 3, rango: "De 07:00 a 11:00", grupo: 1, prioridad: 3, productor: "RJHM", producto: "PBCON", comentario: "", prog: 1, sacadas: 0, hora: "", completado: false },
+      { id: 4, rango: "De 07:00 a 11:00", grupo: 1, prioridad: 4, productor: "RJHM", producto: "CUCON", comentario: "", prog: 3, sacadas: 0, hora: "", completado: false },
+      { id: 5, rango: "De 07:00 a 11:00", grupo: 1, prioridad: 5, productor: "NEXA EP", producto: "PBCON", comentario: "El Porvenir", prog: 6, sacadas: 0, hora: "", completado: false },
+      { id: 6, rango: "De 07:00 a 11:00", grupo: 1, prioridad: 6, productor: "NEXA", producto: "PBCON", comentario: "Atacocha", prog: 1, sacadas: 0, hora: "", completado: false },
+      { id: 7, rango: "De 07:00 a 11:00", grupo: 1, prioridad: 7, productor: "LUZ DE YAVHE", producto: "CUCON", comentario: "", prog: 4, sacadas: 0, hora: "", completado: false },
+      { id: 8, rango: "De 07:00 a 11:00", grupo: 1, prioridad: 8, productor: "BROCAL", producto: "CUCON", comentario: "", prog: 4, sacadas: 0, hora: "", completado: false },
+      { id: 9, rango: "De 07:00 a 11:00", grupo: 1, prioridad: 9, productor: "PAN_HUARON", producto: "PBCON", comentario: "Huaron Cu", prog: 2, sacadas: 0, hora: "", completado: false },
+      { id: 10, rango: "De 07:00 a 11:00", grupo: 1, prioridad: 10, productor: "CONDESTABLE", producto: "CUCON", comentario: "", prog: 9, sacadas: 0, hora: "", completado: false },
+      { id: 11, rango: "De 11:00 a 13:00", grupo: 2, prioridad: 1, productor: "CLARIUM", producto: "CUCON", comentario: "", prog: 2, sacadas: 0, hora: "", completado: false },
+      { id: 12, rango: "De 11:00 a 13:00", grupo: 2, prioridad: 2, productor: "CIEMSA", producto: "PBCON", comentario: "Pomasi", prog: 1, sacadas: 0, hora: "", completado: false },
+      { id: 13, rango: "De 11:00 a 13:00", grupo: 2, prioridad: 3, productor: "BUENAVENTURA", producto: "CUCON", comentario: "Orocopampa 126/26", prog: 2, sacadas: 0, hora: "", completado: false },
+      { id: 14, rango: "De 11:00 a 13:00", grupo: 2, prioridad: 4, productor: "RJHM", producto: "PBCON", comentario: "", prog: 1, sacadas: 0, hora: "", completado: false },
+      { id: 15, rango: "De 11:00 a 13:00", grupo: 2, prioridad: 5, productor: "NEXA", producto: "PBCON", comentario: "Atacocha", prog: 1, sacadas: 0, hora: "", completado: false },
+      { id: 16, rango: "De 11:00 a 13:00", grupo: 2, prioridad: 6, productor: "NUKLEO", producto: "CUCON", comentario: "", prog: 2, sacadas: 0, hora: "", completado: false },
+      { id: 17, rango: "De 11:00 a 13:00", grupo: 2, prioridad: 7, productor: "GOLDEN MANTARO", producto: "CUCON", comentario: "", prog: 1, sacadas: 0, hora: "", completado: false },
+      { id: 18, rango: "De 11:00 a 13:00", grupo: 2, prioridad: 8, productor: "KANI", producto: "CUCON", comentario: "", prog: 2, sacadas: 0, hora: "", completado: false },
+      { id: 19, rango: "De 13:00 a 16:00", grupo: 3, prioridad: 1, productor: "ENPROYEC", producto: "CUCON", comentario: "Complex", prog: 3, sacadas: 0, hora: "", completado: false },
+      { id: 20, rango: "De 13:00 a 16:00", grupo: 3, prioridad: 2, productor: "C.M ALIZAN", producto: "PBCON", comentario: "", prog: 1, sacadas: 0, hora: "", completado: false },
+      { id: 21, rango: "De 13:00 a 16:00", grupo: 3, prioridad: 3, productor: "QUIRUVILCA", producto: "CUCON", comentario: "", prog: 2, sacadas: 0, hora: "", completado: false },
+      { id: 22, rango: "De 13:00 a 16:00", grupo: 3, prioridad: 4, productor: "M. HUALGAYOC", producto: "CUCON", comentario: "", prog: 2, sacadas: 0, hora: "", completado: false },
+      { id: 23, rango: "De 13:00 a 16:00", grupo: 3, prioridad: 5, productor: "CARAVELI", producto: "CUCON", comentario: "", prog: 2, sacadas: 0, hora: "", completado: false }
     ];
+
+    let prioridades = [];
+
+    // Cargar datos de LocalStorage o usar iniciales
+    function cargarDatos() {
+      const guardados = localStorage.getItem("prioridades_despacho_db");
+      if (guardados) {
+        prioridades = JSON.parse(guardados);
+      } else {
+        prioridades = JSON.parse(JSON.stringify(datosIniciales));
+        guardarDatos();
+      }
+      renderTabla();
+    }
+
+    function guardarDatos() {
+      localStorage.setItem("prioridades_despacho_db", JSON.stringify(prioridades));
+    }
 
     function renderTabla() {
       const tbody = document.getElementById("tablaCuerpo");
@@ -135,26 +295,43 @@
       // Ordenar por Grupo y luego por Prioridad
       prioridades.sort((a, b) => a.grupo - b.grupo || a.prioridad - b.prioridad);
 
+      let completados = 0;
+      let pendientes = 0;
+
       prioridades.forEach((item) => {
+        if (item.completado) completados++;
+        else pendientes++;
+
         const tr = document.createElement("tr");
         if (item.completado) tr.classList.add("completed");
 
+        const pendCantidad = item.prog - item.sacadas;
+
         tr.innerHTML = `
+          <td><strong style="color: #475569;">${item.rango}</strong></td>
           <td><span class="badge-grupo">Grupo ${item.grupo}</span></td>
           <td><span class="badge-prioridad">P-${item.prioridad}</span></td>
-          <td><strong>${item.detalle}</strong></td>
-          <td>${item.prog}</td>
+          <td><strong>${item.productor}</strong> ${item.comentario ? `<br><span class="badge-comentario">${item.comentario}</span>` : ''}</td>
+          <td><strong>${item.producto}</strong></td>
+          <td><strong>${item.prog}</strong></td>
           <td>${item.sacadas}</td>
           <td>
-            ${item.completado ? '✓ Completado' : `
-              <input type="number" id="input-${item.id}" min="1" max="${item.prog - item.sacadas}" value="${item.prog - item.sacadas}">
-              <button class="btn-despacho" onclick="registrarSalida(${item.id})">Despachar</button>
+            ${item.completado ? '✓ Atendido' : `
+              <div class="dispatch-control">
+                <input type="number" id="input-${item.id}" min="1" max="${pendCantidad}" value="${pendCantidad}">
+                <button class="btn-despacho" onclick="registrarSalida(${item.id})">Despachar</button>
+              </div>
             `}
           </td>
           <td class="time-stamp">${item.hora || '-'}</td>
         `;
         tbody.appendChild(tr);
       });
+
+      // Actualizar métricas
+      document.getElementById("metricTotal").innerText = prioridades.length;
+      document.getElementById("metricCompletados").innerText = completados;
+      document.getElementById("metricPendientes").innerText = pendientes;
     }
 
     function registrarSalida(id) {
@@ -164,25 +341,29 @@
 
       if (isNaN(cantSacada) || cantSacada <= 0) return;
 
-      const pendientes = item.prog - item.sacadas;
+      const pendActuales = item.prog - item.sacadas;
       const horaActual = new Date().toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
-      if (cantSacada < pendientes) {
-        // 1. Registrar salida parcial en la fila actual
+      if (cantSacada < pendActuales) {
+        // 1. Salida parcial: cierra la cantidad atendidda en la fila actual
         item.prog = item.sacadas + cantSacada;
+        item.sacadas += cantSacada;
         item.hora = horaActual;
         item.completado = true;
 
-        // 2. Buscar la máxima prioridad del grupo actual para asignar la siguiente
+        // 2. Buscar la máxima prioridad dentro del mismo grupo
         const maxPrioridadGrupo = Math.max(...prioridades.filter(p => p.grupo === item.grupo).map(p => p.prioridad));
-        
-        // 3. Crear nueva línea con las pendientes y la nueva prioridad
+
+        // 3. Crear nueva fila para el saldo restante con la siguiente prioridad
         const nuevaLinea = {
           id: Date.now(),
+          rango: item.rango,
           grupo: item.grupo,
           prioridad: maxPrioridadGrupo + 1,
-          detalle: `${item.detalle} (Pendiente)`,
-          prog: pendientes - cantSacada,
+          productor: item.productor,
+          producto: item.producto,
+          comentario: item.comentario ? `${item.comentario} (Re-priorizado)` : '(Pendiente)',
+          prog: pendActuales - cantSacada,
           sacadas: 0,
           hora: "",
           completado: false
@@ -190,17 +371,25 @@
 
         prioridades.push(nuevaLinea);
       } else {
-        // Salida completa
+        // Salida total
         item.sacadas += cantSacada;
         item.hora = horaActual;
         item.completado = true;
       }
 
+      guardarDatos();
       renderTabla();
     }
 
-    // Cargar la tabla al inicio
-    renderTabla();
+    function reiniciarTabla() {
+      if (confirm("¿Está seguro de restablecer los datos iniciales? Se borrarán las horas de salida registradas en este navegador.")) {
+        localStorage.removeItem("prioridades_despacho_db");
+        cargarDatos();
+      }
+    }
+
+    // Inicializar al cargar la página
+    cargarDatos();
   </script>
 </body>
 </html>
