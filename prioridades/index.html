@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Prioridades de Despacho</title>
+  <style>
+    :root {
+      --primary-purple: #903F98;
+      --teal-main: #009991;
+      --dark-navy: #001E33;
+      --bg-body: #f8fafc;
+      --bg-card: #ffffff;
+      --text-muted: #64748b;
+      --success-bg: #e6f4ea;
+      --success-text: #137333;
+    }
+
+    * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+    body { background-color: var(--bg-body); color: var(--dark-navy); margin: 0; padding: 16px; }
+
+    .header {
+      background: var(--bg-card);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,30,51,0.05);
+      border-top: 4px solid var(--primary-purple);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    h2 { margin: 0; color: var(--dark-navy); font-size: 1.3rem; }
+    .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-top: 4px; }
+
+    .table-container {
+      background: var(--bg-card);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,30,51,0.05);
+      overflow-x: auto;
+      border: 1px solid #e2e8f0;
+    }
+
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
+    th { background: #f1f5f9; color: var(--dark-navy); padding: 12px 14px; font-weight: 700; border-bottom: 2px solid #cbd5e1; }
+    td { padding: 12px 14px; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+    tr:hover { background-color: #f8fafc; }
+
+    .badge-grupo {
+      background-color: rgba(0, 153, 145, 0.12);
+      color: var(--teal-main);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .badge-prioridad {
+      background-color: rgba(144, 63, 152, 0.12);
+      color: var(--primary-purple);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+    }
+
+    .completed { background-color: var(--success-bg) !important; color: var(--success-text); }
+    .time-stamp { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+
+    input[type="number"] {
+      width: 70px;
+      padding: 6px 8px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .btn-despacho {
+      background-color: var(--teal-main);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-despacho:hover { background-color: var(--teal-accent, #007a74); }
+    .btn-despacho:disabled { background-color: #cbd5e1; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <h2>Control de Salidas y Prioridades</h2>
+      <div class="subtitle">Despacho de Unidades en Cochera</div>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Grupo</th>
+          <th>Prioridad</th>
+          <th>Detalle / Producto</th>
+          <th>Prog.</th>
+          <th>Sacadas</th>
+          <th>Confirmar</th>
+          <th>Hora Salida</th>
+        </tr>
+      </thead>
+      <tbody id="tablaCuerpo">
+        <!-- Filas cargadas dinámicamente -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Datos iniciales de ejemplo basados en tu estructura
+    let prioridades = [
+      { id: 1, grupo: 1, prioridad: 1, detalle: "ZINC - Pay Metal", prog: 5, sacadas: 0, hora: "", completado: false },
+      { id: 2, grupo: 1, prioridad: 2, detalle: "COBRE - Golden Mantaro", prog: 4, sacadas: 0, hora: "", completado: false },
+      { id: 3, grupo: 2, prioridad: 1, detalle: "PLOMO - Atacocha", prog: 8, sacadas: 0, hora: "", completado: false },
+      { id: 4, grupo: 2, prioridad: 2, detalle: "COBRE - El Brocal", prog: 6, sacadas: 0, hora: "", completado: false }
+    ];
+
+    function renderTabla() {
+      const tbody = document.getElementById("tablaCuerpo");
+      tbody.innerHTML = "";
+
+      // Ordenar por Grupo y luego por Prioridad
+      prioridades.sort((a, b) => a.grupo - b.grupo || a.prioridad - b.prioridad);
+
+      prioridades.forEach((item) => {
+        const tr = document.createElement("tr");
+        if (item.completado) tr.classList.add("completed");
+
+        tr.innerHTML = `
+          <td><span class="badge-grupo">Grupo ${item.grupo}</span></td>
+          <td><span class="badge-prioridad">P-${item.prioridad}</span></td>
+          <td><strong>${item.detalle}</strong></td>
+          <td>${item.prog}</td>
+          <td>${item.sacadas}</td>
+          <td>
+            ${item.completado ? '✓ Completado' : `
+              <input type="number" id="input-${item.id}" min="1" max="${item.prog - item.sacadas}" value="${item.prog - item.sacadas}">
+              <button class="btn-despacho" onclick="registrarSalida(${item.id})">Despachar</button>
+            `}
+          </td>
+          <td class="time-stamp">${item.hora || '-'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function registrarSalida(id) {
+      const item = prioridades.find(p => p.id === id);
+      const input = document.getElementById(`input-${id}`);
+      const cantSacada = parseInt(input.value);
+
+      if (isNaN(cantSacada) || cantSacada <= 0) return;
+
+      const pendientes = item.prog - item.sacadas;
+      const horaActual = new Date().toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+      if (cantSacada < pendientes) {
+        // 1. Registrar salida parcial en la fila actual
+        item.prog = item.sacadas + cantSacada;
+        item.hora = horaActual;
+        item.completado = true;
+
+        // 2. Buscar la máxima prioridad del grupo actual para asignar la siguiente
+        const maxPrioridadGrupo = Math.max(...prioridades.filter(p => p.grupo === item.grupo).map(p => p.prioridad));
+        
+        // 3. Crear nueva línea con las pendientes y la nueva prioridad
+        const nuevaLinea = {
+          id: Date.now(),
+          grupo: item.grupo,
+          prioridad: maxPrioridadGrupo + 1,
+          detalle: `${item.detalle} (Pendiente)`,
+          prog: pendientes - cantSacada,
+          sacadas: 0,
+          hora: "",
+          completado: false
+        };
+
+        prioridades.push(nuevaLinea);
+      } else {
+        // Salida completa
+        item.sacadas += cantSacada;
+        item.hora = horaActual;
+        item.completado = true;
+      }
+
+      renderTabla();
+    }
+
+    // Cargar la tabla al inicio
+    renderTabla();
+  </script>
+</body>
+</html>
