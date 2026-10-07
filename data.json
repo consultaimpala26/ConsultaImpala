@@ -1,19 +1,4 @@
 [
-  {
-    "CODIGO": "BWB-916",
-    "VENTANA_HORARIA": "Revisar asignaci�n"
-  },
-  {
-    "CODIGO": "BYO-766",
-    "VENTANA_HORARIA": "Revisar asignaci�n"
-  },
-  {
-    "CODIGO": "BWB-742",
-    "VENTANA_HORARIA": "Revisar asignaci�n"
-  },
-  {
-    "CODIGO": "C1S-809",
-    "VENTANA_HORARIA": "Revisar asignaci�n"
   },
   {
     "CODIGO": "BUA-708",
@@ -28,16 +13,12 @@
     "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
-    "CODIGO": "BYP-822",
-    "VENTANA_HORARIA": "Revisar asignaci�n"
-  },
-  {
     "CODIGO": "AVB-945",
     "VENTANA_HORARIA": "De 11:00 a 13:00"
   },
   {
     "CODIGO": "BWB-759",
-    "VENTANA_HORARIA": "Revisar asignaci�n"
+    "VENTANA_HORARIA": "De 07:00 a 11:00"
   },
   {
     "CODIGO": "CEW-831",
