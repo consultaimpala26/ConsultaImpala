@@ -210,5 +210,49 @@
   {
     "CODIGO": "BWD-742",
     "VENTANA_HORARIA": "De 07:00 a 11:00"
+  },
+  {
+    "CODIGO": "CKS-785",
+    "VENTANA_HORARIA": "De 11:00 a 14:00"
+  },
+  {
+    "CODIGO": "CKS-830",
+    "VENTANA_HORARIA": "De 11:00 a 14:00"
+  },
+  {
+    "CODIGO": "BVY-938",
+    "VENTANA_HORARIA": "De 11:00 a 14:00"
+  },
+  {
+    "CODIGO": "CKR-917",
+    "VENTANA_HORARIA": "De 11:00 a 14:00"
+  },
+  {
+    "CODIGO": "CMP-904",
+    "VENTANA_HORARIA": "De 14:00 a 17:00"
+  },
+  {
+    "CODIGO": "CMP-938",
+    "VENTANA_HORARIA": "De 14:00 a 17:00"
+  },
+  {
+    "CODIGO": "CBB-733",
+    "VENTANA_HORARIA": "De 14:00 a 17:00"
+  },
+  {
+    "CODIGO": "CAK-709",
+    "VENTANA_HORARIA": "De 14:00 a 17:00"
+  },
+  {
+    "CODIGO": "AWO-848",
+    "VENTANA_HORARIA": "De 17:00 a 19:00"
+  },
+  {
+    "CODIGO": "AZG-843",
+    "VENTANA_HORARIA": "Revisar asignaci�n"
+  },
+  {
+    "CODIGO": "ACD-841",
+    "VENTANA_HORARIA": "Revisar asignaci�n"
   }
 ]
